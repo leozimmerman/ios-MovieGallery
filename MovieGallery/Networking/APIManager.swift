@@ -8,18 +8,6 @@
 
 import Foundation
 
-enum ItemType: String {
-    case movie = "/movie"
-    case tvShow = "/tv"
-}
-
-enum CategoryType: String {
-    case popular = "/popular"
-    case topRated = "/top_rated"
-    case upcoming = "/upcoming"
-    case onTheAir = "/on_the_air"
-}
-
 class APIManager {
     static let shared = APIManager()
     
