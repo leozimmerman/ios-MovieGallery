@@ -40,5 +40,6 @@ enum CategoryType: String {
             return "On the Air"
         }
     }
-    
 }
+
+

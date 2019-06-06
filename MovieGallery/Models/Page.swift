@@ -8,9 +8,44 @@
 
 import Foundation
 
-struct Page : Codable {
+class Page : Codable {
     var page: Int
     var total_results: Int
     var total_pages: Int
-    var results : [Item]
+    
+    private enum CodingKeys: String, CodingKey {
+        case page
+        case total_results
+        case total_pages
+    }
 }
+
+class MoviesPage : Page {
+    var results : [Movie]
+    
+    private enum CodingKeys: String, CodingKey {
+        case results
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        results = try container.decode([Movie].self, forKey: .results)
+        try super.init(from: decoder)
+    }
+}
+
+class TvShowsPage : Page {
+    var results : [TvShow]
+    
+    private enum CodingKeys: String, CodingKey {
+        case results
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        results = try container.decode([TvShow].self, forKey: .results)
+        try super.init(from: decoder)
+    }
+}
+
+

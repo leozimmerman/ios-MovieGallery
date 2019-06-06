@@ -30,4 +30,11 @@ class Item: Codable {
         case overview
         case poster_path
     }
+    
+    func posterFullPath(with configuration: Configuration) -> String {
+        let baseUrl = configuration.images.base_url
+        let size = configuration.images.poster_sizes[3]
+        let path = self.poster_path
+        return baseUrl + size + path
+    }
 }

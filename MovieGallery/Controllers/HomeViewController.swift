@@ -10,27 +10,38 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    
     @IBOutlet private var sectionsSelectorView: SectionsSelectorView! {
         didSet {
             sectionsSelectorView.delegate = self
         }
     }
     @IBOutlet private var sectionsSelectorHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var collectionView: UICollectionView! {
+        didSet {
+            collectionView.delegate = self
+            collectionView.dataSource = self
+        }
+    }
     
     private var items = [Item]()
+    private var currentItemType: ItemType = .movie
+    private var currentCategoryType: CategoryType = .popular
 
+    //MARK: - Life View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
         fetchData()
-        
     }
     
     func fetchData(){
-        APIManager.shared.fetchPage(with: .movie, categoryType: .popular, pageNumber: 2) { (page) in
-            if let results = page?.results {
-                self.items = results
+        APIManager.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType, pageNumber: 1) { (page) in
+            DispatchQueue.main.async {
+                if let moviePage = page as? MoviesPage {
+                    self.loadItems(moviePage.results)
+                } else if let tvShowsPage = page as? TvShowsPage {
+                    self.loadItems(tvShowsPage.results)
+                }
             }
         }
     }
@@ -46,18 +57,65 @@ class HomeViewController: UIViewController {
             self.sectionsSelectorHeightConstraint.constant = height
             self.view.layoutIfNeeded()
         }
-        
+    }
+    
+    func loadItems(_ items: [Item]) {
+        self.items = items
+        self.collectionView.reloadData()
+    }
+    
+    func presentDetailViewController(with item: Item) {
+        let vc = DetailViewController.create(with: item)
+        present(vc, animated: true, completion: nil)
     }
 }
 
+//MARK: - Section Selector delegate
 extension HomeViewController : SectionSelectorDelegate {
     func didToggleCollapse(_ sectionSelectorView: SectionsSelectorView, collapsed: Bool) {
         setSelectorViewCollapsed(collapsed, animated: true)
     }
     
     func didChangeSection(_ sectionSelectorView: SectionsSelectorView, itemType: ItemType, categoryType: CategoryType) {
-            print("Did Change value")
+        currentItemType = itemType
+        currentCategoryType = categoryType
+        fetchData()
     }
+}
+
+//MARK: - UICollectionView delegates
+extension HomeViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.bounds.width / 2, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+}
+
+extension HomeViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presentDetailViewController(with: items[indexPath.item])
+    }
+}
+
+extension HomeViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
+        cell.setup(with: items[indexPath.item])
+        return cell
+    }
+    
+    
 }
 
 

@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8O-rs-yfn">
-                    <rect key="frame" x="20" y="13" width="305" height="24"/>
+                    <rect key="frame" x="163.5" y="13" width="48" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -73,11 +73,10 @@
                 <constraint firstItem="xfZ-Ri-KKE" firstAttribute="top" secondItem="qxL-KZ-kIp" secondAttribute="bottom" id="2OZ-00-BAc"/>
                 <constraint firstItem="1hB-2j-NKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3vk-QG-8Tx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1hB-2j-NKj" secondAttribute="trailing" id="4kv-eI-gEZ"/>
-                <constraint firstItem="e8O-rs-yfn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7ba-Kg-t4m"/>
-                <constraint firstItem="Oi0-dG-8Ix" firstAttribute="leading" secondItem="e8O-rs-yfn" secondAttribute="trailing" id="Boo-bK-jnR"/>
                 <constraint firstItem="1hB-2j-NKj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Er8-gV-9MV"/>
                 <constraint firstItem="qxL-KZ-kIp" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="G21-Us-u7v"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Oi0-dG-8Ix" secondAttribute="trailing" constant="20" id="IKc-ai-nxh"/>
+                <constraint firstItem="e8O-rs-yfn" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ORg-Ny-mTs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xfZ-Ri-KKE" secondAttribute="trailing" id="W2S-0n-rqw"/>
                 <constraint firstItem="qxL-KZ-kIp" firstAttribute="top" secondItem="1hB-2j-NKj" secondAttribute="bottom" constant="20" id="ah9-11-EyD"/>
                 <constraint firstItem="xfZ-Ri-KKE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hDw-bW-IR7"/>
