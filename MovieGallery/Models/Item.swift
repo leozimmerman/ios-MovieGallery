@@ -31,10 +31,27 @@ class Item: Codable {
         case poster_path
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(genre_ids, forKey: .genre_ids)
+        try container.encode(popularity, forKey: .popularity)
+        try container.encode(vote_count, forKey: .vote_count)
+        try container.encode(backdrop_path, forKey: .backdrop_path)
+        try container.encode(original_language, forKey: .original_language)
+        try container.encode(id, forKey: .id)
+        try container.encode(vote_average, forKey: .vote_average)
+        try container.encode(overview, forKey: .overview)
+        try container.encode(poster_path, forKey: .poster_path)
+    }
+    
     func posterFullPath(with configuration: Configuration) -> String {
         let baseUrl = configuration.images.base_url
         let size = configuration.images.poster_sizes[3]
         let path = self.poster_path
         return baseUrl + size + path
+    }
+    
+    var posterImageName: String {
+        return poster_path.replacingOccurrences(of: "/", with: "")
     }
 }

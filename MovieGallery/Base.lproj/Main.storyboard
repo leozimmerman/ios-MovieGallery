@@ -17,7 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="5NI-BV-KM6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.44454161450000002" green="1" blue="0.27272229539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vQb-DG-VhS"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="vHp-tn-D7u">
@@ -59,13 +59,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="W4E-QX-5vu">
+                                                    <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vkK-bY-Rqz">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="W4E-QX-5vu" firstAttribute="centerY" secondItem="dPb-Fr-lnb" secondAttribute="centerY" id="CaL-Vm-ZoR"/>
                                             <constraint firstAttribute="trailing" secondItem="vkK-bY-Rqz" secondAttribute="trailing" id="CpT-HV-a3Z"/>
+                                            <constraint firstItem="W4E-QX-5vu" firstAttribute="centerX" secondItem="dPb-Fr-lnb" secondAttribute="centerX" id="Qod-CF-oDF"/>
                                             <constraint firstAttribute="bottom" secondItem="vkK-bY-Rqz" secondAttribute="bottom" id="izN-jU-Ek9"/>
                                             <constraint firstItem="vkK-bY-Rqz" firstAttribute="leading" secondItem="dPb-Fr-lnb" secondAttribute="leading" id="oHv-l6-QcU"/>
                                             <constraint firstItem="vkK-bY-Rqz" firstAttribute="top" secondItem="dPb-Fr-lnb" secondAttribute="top" id="vLF-C8-kG7"/>

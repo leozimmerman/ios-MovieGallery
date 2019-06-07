@@ -13,7 +13,6 @@ class APIManager {
     
     private let mainUrl: String = "https://api.themoviedb.org/3"
     private let keyNameApiKey: String = "api_key"
-    private let keyNamePage: String = "page"
     
     private lazy var apiKey = Bundle.main.object(forInfoDictionaryKey: "API Key") as? String
     
@@ -45,16 +44,16 @@ class APIManager {
         return components.url
     }
     
-    func fetchPage(with itemType: ItemType, categoryType: CategoryType, pageNumber: Int, completion: @escaping (Page?)->()) {
+    func fetchPage(with itemType: ItemType, categoryType: CategoryType, completion: @escaping (Page?)->()) {
         
         if systemConfiguration == nil {
             fetchConfiguration {
-                self.fetchPage(with: itemType, categoryType: categoryType, pageNumber: pageNumber, completion: completion)
+                self.fetchPage(with: itemType, categoryType: categoryType, completion: completion)
             }
             return
         }
         
-        guard let url = createPageUrl(with: itemType, categoryType: categoryType, pageNumber: pageNumber) else {
+        guard let url = createPageUrl(with: itemType, categoryType: categoryType) else {
             print("Error: cannot create URL")
             completion(nil)
             return
@@ -73,17 +72,16 @@ class APIManager {
     }
     
     private func createPageUrlString(with itemType: ItemType, categoryType: CategoryType) -> String {
-        return mainUrl + itemType.rawValue + categoryType.rawValue
+        return mainUrl + itemType.endpoint + categoryType.endpoint
     }
     
-    private func createPageUrl(with itemType: ItemType, categoryType: CategoryType, pageNumber: Int) -> URL? {
+    private func createPageUrl(with itemType: ItemType, categoryType: CategoryType) -> URL? {
         let urlString = createPageUrlString(with: itemType, categoryType: categoryType)
         guard var components = URLComponents(string: urlString) else {
             return nil
         }
         components.queryItems = [
             URLQueryItem(name: keyNameApiKey, value: apiKey),
-            URLQueryItem(name: keyNamePage, value: String(pageNumber))
         ]
         return components.url
     }

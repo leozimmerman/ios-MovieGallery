@@ -15,7 +15,8 @@ class ItemCollectionViewCell : UICollectionViewCell {
     func setup(with item: Item) {
         if let configuration = APIManager.shared.systemConfiguration {
             let imageUrlPath = item.posterFullPath(with: configuration)
-            imageView.fetch(from: imageUrlPath)
+//            imageView.fetch(from: imageUrlPath)
+            imageView.loadImage(name: item.posterImageName, urlString: imageUrlPath)
         }
     }
     

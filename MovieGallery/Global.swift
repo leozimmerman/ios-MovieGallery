@@ -8,9 +8,15 @@
 
 import Foundation
 
+
+
 enum ItemType: String {
-    case movie = "/movie"
-    case tvShow = "/tv"
+    case movie = "movie"
+    case tvShow = "tv"
+    
+    var endpoint: String {
+        return "/" + self.rawValue
+    }
     
     func title() -> String {
         switch self {
@@ -23,10 +29,14 @@ enum ItemType: String {
 }
 
 enum CategoryType: String {
-    case popular = "/popular"
-    case topRated = "/top_rated"
-    case upcoming = "/upcoming"
-    case onTheAir = "/on_the_air"
+    case popular = "popular"
+    case topRated = "top_rated"
+    case upcoming = "upcoming"
+    case onTheAir = "on_the_air"
+    
+    var endpoint: String {
+        return "/" + self.rawValue
+    }
     
     func title() -> String {
         switch self {

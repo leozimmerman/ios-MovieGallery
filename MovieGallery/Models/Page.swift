@@ -18,34 +18,17 @@ class Page : Codable {
         case total_results
         case total_pages
     }
-}
-
-class MoviesPage : Page {
-    var results : [Movie]
     
-    private enum CodingKeys: String, CodingKey {
-        case results
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        results = try container.decode([Movie].self, forKey: .results)
-        try super.init(from: decoder)
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(page, forKey: .page)
+        try container.encode(total_results, forKey: .total_results)
+        try container.encode(total_pages, forKey: .total_pages)
     }
 }
 
-class TvShowsPage : Page {
-    var results : [TvShow]
-    
-    private enum CodingKeys: String, CodingKey {
-        case results
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        results = try container.decode([TvShow].self, forKey: .results)
-        try super.init(from: decoder)
-    }
-}
+
+
+
 
 

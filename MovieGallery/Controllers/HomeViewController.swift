@@ -32,15 +32,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
         fetchData()
+        let movie = StorageManager.shared.loadMoviesPage(itemType: currentItemType, categoryType: currentCategoryType)
+        
     }
     
     func fetchData(){
-        APIManager.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType, pageNumber: 1) { (page) in
+        APIManager.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page) in
             DispatchQueue.main.async {
-                if let moviePage = page as? MoviesPage {
-                    self.loadItems(moviePage.results)
-                } else if let tvShowsPage = page as? TvShowsPage {
-                    self.loadItems(tvShowsPage.results)
+                if let p = page {
+                    self.loadPage(p)
                 }
             }
         }
@@ -59,9 +59,20 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func loadPage(_ page: Page) {
+        if let moviePage = page as? MoviesPage {
+            StorageManager.shared.saveMoviesPage(moviePage, itemType: currentItemType, categoryType: currentCategoryType)
+            self.loadItems(moviePage.results)
+        } else if let tvShowsPage = page as? TvShowsPage {
+            self.loadItems(tvShowsPage.results)
+        }
+    }
+    
     func loadItems(_ items: [Item]) {
         self.items = items
         self.collectionView.reloadData()
+        
+        
     }
     
     func presentDetailViewController(with item: Item) {
@@ -114,8 +125,6 @@ extension HomeViewController : UICollectionViewDataSource {
         cell.setup(with: items[indexPath.item])
         return cell
     }
-    
-    
 }
 
 

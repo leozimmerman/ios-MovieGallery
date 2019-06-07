@@ -8,25 +8,49 @@
 
 import UIKit
 
-extension UIImageView {
-    //TODO: Add completion
-    func fetch(from url: URL) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else {
-                    return
-            }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-            }.resume()
+
+
+extension UIImage {
+    func save(_ name: String) {
+        let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let url = URL(fileURLWithPath: path).appendingPathComponent(name)
+        do {
+            //try self.pngData()?.write(to: url)
+            try self.jpegData(compressionQuality: 1)?.write(to: url)
+            print("saved image at \(url)")
+        } catch {
+            print("error saving image")
+        }
     }
     
-    func fetch(from link: String) {
-        guard let url = URL(string: link) else { return }
-        fetch(from: url)
+    
+}
+
+extension UIImageView {
+    func loadImage(name: String, urlString: String){
+        
+        if let imageFromCache = ImageCacheHandler.shared.getImage(withKey: urlString) {
+            self.image = imageFromCache
+            return
+        }
+        
+        if let imageFromStorage = StorageManager.shared.loadImage(withName: name) {
+            self.image = imageFromStorage
+            return
+        }
+        
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) {
+            data, response, error in
+            if let responseData = data {
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: responseData) {
+                        self.image = image
+                        ImageCacheHandler.shared.setImage(image, withKey: urlString)
+                        StorageManager.shared.saveImage(image, name: name)
+                    }
+                }
+            }
+            }.resume()
     }
 }
