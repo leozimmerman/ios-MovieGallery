@@ -16,19 +16,12 @@ class DetailViewController : UIViewController {
     private var item: Item!
     
     override func viewDidLoad() {
-        titleLabel.text = {
-            if let movieItem = item as? Movie {
-                return movieItem.title
-            } else if let tvShowItem = item as? TvShow {
-                return tvShowItem.original_name
-            }
-            return ""
-        }()
+        titleLabel.text = item.name
         overviewLabel.text = item.overview
         
         if let configuration = APIManager.shared.systemConfiguration {
             let imageUrlPath = item.posterFullPath(with: configuration)
-            imageView.fetch(from: imageUrlPath)
+            imageView.loadImage(name: item.posterImageName, urlString: imageUrlPath)
         }
     }
     

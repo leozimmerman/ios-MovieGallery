@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private var items = [Item]()
+    private var items: [Item]?
     private var currentItemType: ItemType = .movie
     private var currentCategoryType: CategoryType = .popular
 
@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     func fetchData(){
+        //TODO: Call StoreManager
         APIManager.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page) in
             DispatchQueue.main.async {
                 if let p = page {
@@ -60,19 +61,9 @@ class HomeViewController: UIViewController {
     }
     
     func loadPage(_ page: Page) {
-        if let moviePage = page as? MoviesPage {
-            StorageManager.shared.saveMoviesPage(moviePage, itemType: currentItemType, categoryType: currentCategoryType)
-            self.loadItems(moviePage.results)
-        } else if let tvShowsPage = page as? TvShowsPage {
-            self.loadItems(tvShowsPage.results)
-        }
-    }
-    
-    func loadItems(_ items: [Item]) {
-        self.items = items
-        self.collectionView.reloadData()
-        
-        
+        StorageManager.shared.savePage(page, categoryType: currentCategoryType)
+        items = page.items as? [Item]
+        collectionView.reloadData()
     }
     
     func presentDetailViewController(with item: Item) {
@@ -111,18 +102,21 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailViewController(with: items[indexPath.item])
+        guard let item = items?[indexPath.item] else { return }
+        presentDetailViewController(with: item)
     }
 }
 
 extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return items?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
-        cell.setup(with: items[indexPath.item])
+        if let item = items?[indexPath.item] {
+            cell.setup(with: item)
+        }
         return cell
     }
 }

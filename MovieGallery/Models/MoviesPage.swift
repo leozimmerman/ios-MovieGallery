@@ -11,6 +11,8 @@ import Foundation
 class MoviesPage : Page {
     var results : [Movie]
     
+    override var items: [Any] { return results }
+    
     private enum CodingKeys: String, CodingKey {
         case results
     }

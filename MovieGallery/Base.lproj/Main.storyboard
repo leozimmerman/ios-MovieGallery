@@ -17,12 +17,38 @@
                     <view key="view" contentMode="scaleToFill" id="5NI-BV-KM6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-Yg-ts0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="gvh-ab-ht0"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bnt-QD-Bxa">
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ofu-Yg-ts0" firstAttribute="top" secondItem="vQb-DG-VhS" secondAttribute="top" id="IcT-xJ-1WI"/>
+                            <constraint firstItem="ofu-Yg-ts0" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="J4U-yr-IKY"/>
+                            <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="bnt-QD-Bxa" secondAttribute="trailing" id="TKK-fy-Mui"/>
+                            <constraint firstItem="bnt-QD-Bxa" firstAttribute="top" secondItem="ofu-Yg-ts0" secondAttribute="bottom" id="X7o-rG-rXM"/>
+                            <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="ofu-Yg-ts0" secondAttribute="trailing" id="hJd-ex-ath"/>
+                            <constraint firstItem="bnt-QD-Bxa" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="u7v-UR-wBG"/>
+                            <constraint firstItem="vQb-DG-VhS" firstAttribute="bottom" secondItem="bnt-QD-Bxa" secondAttribute="bottom" id="yoF-P8-kDT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vQb-DG-VhS"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="vHp-tn-D7u">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="searchBar" destination="ofu-Yg-ts0" id="PqO-E8-gMD"/>
+                        <outlet property="tableView" destination="bnt-QD-Bxa" id="Y1F-68-Xir"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="768-m0-zLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kiI-3h-Lts" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rtU-lK-XP6" secondAttribute="leading" symbolic="YES" id="1Nk-he-wa0"/>
                             <constraint firstItem="rtU-lK-XP6" firstAttribute="trailing" secondItem="kiI-3h-Lts" secondAttribute="trailing" constant="20" id="CEn-v5-Wcb"/>

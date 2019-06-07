@@ -13,6 +13,8 @@ class Page : Codable {
     var total_results: Int
     var total_pages: Int
     
+    var items : [Any] { return [Any]() }
+    
     private enum CodingKeys: String, CodingKey {
         case page
         case total_results

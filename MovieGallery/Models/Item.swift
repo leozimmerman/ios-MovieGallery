@@ -19,6 +19,8 @@ class Item: Codable {
     var overview: String
     var poster_path: String
     
+    var name: String { return String() }
+    
     private enum CodingKeys: String, CodingKey {
         case genre_ids
         case popularity

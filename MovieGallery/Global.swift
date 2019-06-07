@@ -26,6 +26,8 @@ enum ItemType: String {
             return "Tv Shows"
         }
     }
+    
+    static var allTypes: [ItemType] = [.movie, .tvShow]
 }
 
 enum CategoryType: String {
@@ -50,6 +52,8 @@ enum CategoryType: String {
             return "On the Air"
         }
     }
+    
+    static var allTypes: [CategoryType] = [.popular, .topRated, .upcoming, .onTheAir]
 }
 
 

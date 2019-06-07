@@ -12,6 +12,10 @@ class Movie : Item {
     var adult: Bool
     var release_date: String
     
+    override var name: String {
+        return title
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case title
         case original_title

@@ -12,30 +12,42 @@ class StorageManager {
     
     static let shared = StorageManager()
     
+    //TODO: FIX -  add Map
+    var allStoredItems: [Item]? {
+        var storedItems = [Item]()
+        for t in ItemType.allTypes {
+            for c in CategoryType.allTypes {
+                if let items = loadMoviesPage(itemType: t, categoryType: c)?.items as? [Item] {
+                    storedItems.append(contentsOf: items)
+                }
+            }
+        }
+        return storedItems
+    }
+    
     //TODO: Check using Types
-    func saveMoviesPage(_ moviesPage: MoviesPage, itemType: ItemType, categoryType: CategoryType) {
-        let filename = getFilename(with: itemType, categoryType: categoryType)
-        let store = LocalJSONStore<MoviesPage>(storageType: StorageType.cache, filename: filename)
-        store.save(moviesPage)
+    func savePage(_ page: Page, categoryType: CategoryType) {
+        if let moviesPage = page as? MoviesPage {
+            let filename = getFilename(with: .movie, categoryType: categoryType)
+            let store = LocalJSONStore<MoviesPage>(storageType: StorageType.cache, filename: filename)
+            store.save(moviesPage)
+        } else if let tvShowsPage = page as? TvShowsPage {
+            let filename = getFilename(with: .tvShow, categoryType: categoryType)
+            let store = LocalJSONStore<TvShowsPage>(storageType: StorageType.cache, filename: filename)
+            store.save(tvShowsPage)
+        }
     }
     
-    func saveTvShowsPage(_ moviesPage: TvShowsPage, itemType: ItemType, categoryType: CategoryType) {
+    func loadMoviesPage(itemType: ItemType, categoryType: CategoryType) -> Page? {
         let filename = getFilename(with: itemType, categoryType: categoryType)
-        let store = LocalJSONStore<TvShowsPage>(storageType: StorageType.cache, filename: filename)
-        store.save(moviesPage)
-    }
-    
-    
-    func loadMoviesPage(itemType: ItemType, categoryType: CategoryType) -> MoviesPage? {
-        let filename = getFilename(with: itemType, categoryType: categoryType)
-        let store = LocalJSONStore<MoviesPage>(storageType: StorageType.cache, filename: filename)
-        return store.storedValue
-    }
-    
-    func loadTvShowsPage(itemType: ItemType, categoryType: CategoryType) -> TvShowsPage? {
-        let filename = getFilename(with: itemType, categoryType: categoryType)
-        let store = LocalJSONStore<TvShowsPage>(storageType: StorageType.cache, filename: filename)
-        return store.storedValue
+        switch itemType {
+        case .movie:
+            let store = LocalJSONStore<MoviesPage>(storageType: StorageType.cache, filename: filename)
+            return store.storedValue
+        case .tvShow:
+            let store = LocalJSONStore<TvShowsPage>(storageType: StorageType.cache, filename: filename)
+            return store.storedValue
+        }
     }
     
     func saveImage(_ image: UIImage, name: String) {

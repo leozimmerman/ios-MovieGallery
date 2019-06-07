@@ -11,6 +11,8 @@ import Foundation
 class TvShowsPage : Page {
     var results : [TvShow]
     
+    override var items: [Any] { return results }
+    
     private enum CodingKeys: String, CodingKey {
         case results
     }
