@@ -39,7 +39,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: Data loading/fetching
     private func loadSelectedSection() {
-        if let savedPage = DataHandler.shared.getStoredPage(with: currentItemType, categoryType: currentCategoryType) {
+        if let savedPage = APIDataHandler.getStoredPage(with: currentItemType, categoryType: currentCategoryType) {
             loadPage(savedPage)
         } else {
             clearPage()
@@ -48,7 +48,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func fetchSelectedSectionData(){
-        DataHandler.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page: Page?) in
+        APIDataHandler.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page: Page?) in
             DispatchQueue.main.async {
                 if let page = page {
                     self.loadPage(page)

@@ -20,7 +20,7 @@ class URLBuilder {
     
     func fetchConfiguration() {
         guard let url = createConfigurationUrl() else { return }
-        DataHandler.shared.getConfiguration(url: url) { (configuration) in
+        APIDataHandler.getConfiguration(url: url) { (configuration) in
             guard let config = configuration else {
                 print("URLBuilder: Error retrieving API configuration")
                 return
