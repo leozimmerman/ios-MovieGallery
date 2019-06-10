@@ -29,12 +29,12 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allItems = StorageManager.shared.allStoredItems
+        allItems = StorageManager.allStoredItems
     }
     
     func filterItems(withText text: String) {
         filteredItems = allItems?.filter({ (item) -> Bool in
-            item.name.lowercased().contains(text.lowercased())
+            item.displayTitle.lowercased().contains(text.lowercased())
         })
         tableView.reloadData()
     }
@@ -64,10 +64,10 @@ extension SearchViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") else {
-            return UITableViewCell(style: .default, reuseIdentifier: "defaultCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") else {
+            return UITableViewCell(style: .default, reuseIdentifier: "DefaultCell")
         }
-        cell.textLabel?.text = filteredItems?[indexPath.row].name
+        cell.textLabel?.text = filteredItems?[indexPath.row].displayTitle
         return cell
     }
 }

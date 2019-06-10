@@ -69,8 +69,12 @@
                                     <constraint firstAttribute="height" constant="225" id="pKQ-gF-wnZ"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Dd-uj-gmb">
+                                <rect key="frame" x="177.5" y="421.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OQB-KK-BUJ">
                                 <rect key="frame" x="0.0" y="245" width="375" height="373"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="O7C-Iu-12s">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -113,6 +117,8 @@
                         <constraints>
                             <constraint firstItem="OQB-KK-BUJ" firstAttribute="top" secondItem="KUl-eW-T1Z" secondAttribute="bottom" id="CVw-ln-GTP"/>
                             <constraint firstItem="NTi-UT-8Qm" firstAttribute="bottom" secondItem="OQB-KK-BUJ" secondAttribute="bottom" id="I5E-L2-KFh"/>
+                            <constraint firstItem="1Dd-uj-gmb" firstAttribute="centerY" secondItem="OQB-KK-BUJ" secondAttribute="centerY" id="LvA-hb-w57"/>
+                            <constraint firstItem="1Dd-uj-gmb" firstAttribute="centerX" secondItem="OQB-KK-BUJ" secondAttribute="centerX" id="OBT-Ul-Wbr"/>
                             <constraint firstItem="OQB-KK-BUJ" firstAttribute="leading" secondItem="NTi-UT-8Qm" secondAttribute="leading" id="Ojv-Sc-ymc"/>
                             <constraint firstItem="NTi-UT-8Qm" firstAttribute="trailing" secondItem="KUl-eW-T1Z" secondAttribute="trailing" id="RCI-2r-iYQ"/>
                             <constraint firstItem="NTi-UT-8Qm" firstAttribute="trailing" secondItem="OQB-KK-BUJ" secondAttribute="trailing" id="Tf9-b0-UXr"/>
@@ -125,6 +131,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="1Dd-uj-gmb" id="ITS-AR-uKX"/>
                         <outlet property="collectionView" destination="OQB-KK-BUJ" id="Iik-7V-ri5"/>
                         <outlet property="sectionsSelectorHeightConstraint" destination="pKQ-gF-wnZ" id="1ko-3Y-cU4"/>
                         <outlet property="sectionsSelectorView" destination="KUl-eW-T1Z" id="y02-ar-jo9"/>

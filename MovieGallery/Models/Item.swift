@@ -12,14 +12,14 @@ class Item: Codable {
     var genre_ids: [Int]
     var popularity: Double
     var vote_count: Int
-    var backdrop_path: String
+    var backdrop_path: String?
     var original_language: String
     var id: Int
     var vote_average: Float
     var overview: String
-    var poster_path: String
+    var poster_path: String?
     
-    var name: String { return String() }
+    var displayTitle: String { return String() }
     
     private enum CodingKeys: String, CodingKey {
         case genre_ids
@@ -46,14 +46,7 @@ class Item: Codable {
         try container.encode(poster_path, forKey: .poster_path)
     }
     
-    func posterFullPath(with configuration: Configuration) -> String {
-        let baseUrl = configuration.images.base_url
-        let size = configuration.images.poster_sizes[3]
-        let path = self.poster_path
-        return baseUrl + size + path
-    }
-    
-    var posterImageName: String {
-        return poster_path.replacingOccurrences(of: "/", with: "")
+    var posterImageName: String? {
+        return poster_path?.replacingOccurrences(of: "/", with: "")
     }
 }

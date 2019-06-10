@@ -25,6 +25,11 @@ enum StorageType {
         return URL(fileURLWithPath: path).appendingPathComponent(subfolder)
     }
     
+    var baseFolder: URL {
+        let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first!
+        return URL(fileURLWithPath: path)
+    }
+    
     func clearStorage() {
         try? FileManager.default.removeItem(at: folder)
     }

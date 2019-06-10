@@ -12,7 +12,7 @@ class Movie : Item {
     var adult: Bool
     var release_date: String
     
-    override var name: String {
+    override var displayTitle: String {
         return title
     }
     

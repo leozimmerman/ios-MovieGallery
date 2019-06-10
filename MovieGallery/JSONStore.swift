@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LocalJSONStore<T> where T : Codable {
+class JSONStore<T> where T : Codable {
     let storageType: StorageType
     let filename: String
     

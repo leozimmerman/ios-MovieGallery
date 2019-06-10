@@ -8,8 +8,10 @@
 
 import UIKit
 
+//TODO: Clean up
 class HomeViewController: UIViewController {
     
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var sectionsSelectorView: SectionsSelectorView! {
         didSet {
             sectionsSelectorView.delegate = self
@@ -31,17 +33,39 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
-        fetchData()
-        let movie = StorageManager.shared.loadMoviesPage(itemType: currentItemType, categoryType: currentCategoryType)
-        
+        loadSelectedSection()
     }
     
-    func fetchData(){
-        //TODO: Call StoreManager
-        APIManager.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page) in
+    func clearPage() {
+        items?.removeAll()
+        collectionView.reloadData()
+        collectionView.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    func loadPage(_ page: Page) {
+        items = page.items
+        collectionView.reloadData()
+        collectionView.isHidden = false
+        activityIndicator.stopAnimating()
+    }
+    
+    func loadSelectedSection() {
+        if let savedPage = DataHandler.shared.getStoredPage(with: currentItemType, categoryType: currentCategoryType) {
+            loadPage(savedPage)
+        } else {
+            clearPage()
+        }
+        fetchSelectedSectionData()
+    }
+    
+    func fetchSelectedSectionData(){
+        DataHandler.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page: Page?) in
             DispatchQueue.main.async {
-                if let p = page {
-                    self.loadPage(p)
+                if let page = page {
+                    self.loadPage(page)
+                } else {
+                    self.showErrorAlert(message: "An error ocurred retrieving data from the server.")
                 }
             }
         }
@@ -60,12 +84,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func loadPage(_ page: Page) {
-        StorageManager.shared.savePage(page, categoryType: currentCategoryType)
-        items = page.items as? [Item]
-        collectionView.reloadData()
+    func showErrorAlert(message: String) {
+        let alertController = UIAlertController.createErrorAlertController(withMessage: message)
+        self.present(alertController, animated: true, completion: nil)
     }
-    
+
     func presentDetailViewController(with item: Item) {
         let vc = DetailViewController.create(with: item)
         present(vc, animated: true, completion: nil)
@@ -81,7 +104,7 @@ extension HomeViewController : SectionSelectorDelegate {
     func didChangeSection(_ sectionSelectorView: SectionsSelectorView, itemType: ItemType, categoryType: CategoryType) {
         currentItemType = itemType
         currentCategoryType = categoryType
-        fetchData()
+        loadSelectedSection()
     }
 }
 
@@ -113,7 +136,7 @@ extension HomeViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
         if let item = items?[indexPath.item] {
             cell.setup(with: item)
         }

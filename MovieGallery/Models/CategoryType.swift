@@ -8,33 +8,12 @@
 
 import Foundation
 
-
-
-enum ItemType: String {
-    case movie = "movie"
-    case tvShow = "tv"
-    
-    var endpoint: String {
-        return "/" + self.rawValue
-    }
-    
-    func title() -> String {
-        switch self {
-        case .movie:
-            return "Movies"
-        case .tvShow:
-            return "Tv Shows"
-        }
-    }
-    
-    static var allTypes: [ItemType] = [.movie, .tvShow]
-}
-
 enum CategoryType: String {
     case popular = "popular"
     case topRated = "top_rated"
     case upcoming = "upcoming"
     case onTheAir = "on_the_air"
+    case airingToday = "airing_today"
     
     var endpoint: String {
         return "/" + self.rawValue
@@ -50,10 +29,14 @@ enum CategoryType: String {
             return "Upcoming"
         case .onTheAir:
             return "On the Air"
+        case .airingToday:
+            return "Airing Today"
         }
     }
     
-    static var allTypes: [CategoryType] = [.popular, .topRated, .upcoming, .onTheAir]
+    static var allTypes: [CategoryType] = [.popular, .topRated, .upcoming, .onTheAir, .airingToday]
+    static var moviesTypes: [CategoryType] = [.popular, .topRated, .upcoming]
+    static var tvShowsTypes: [CategoryType] = [.popular, .topRated, .onTheAir, .airingToday]
 }
 
 

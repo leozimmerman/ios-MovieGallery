@@ -10,15 +10,17 @@ class TvShow : Item {
     var original_name: String
     var origin_country: [String]
     var first_air_date: String
+    var name: String
     
-    override var name: String {
-        return original_name
+    override var displayTitle: String {
+        return name
     }
     
     private enum CodingKeys: String, CodingKey {
         case original_name
         case origin_country
         case first_air_date
+        case name
     }
     
     required init(from decoder: Decoder) throws {
@@ -26,6 +28,7 @@ class TvShow : Item {
         original_name = try container.decode(String.self, forKey: .original_name)
         origin_country = try container.decode([String].self, forKey: .origin_country)
         first_air_date = try container.decode(String.self, forKey: .first_air_date)
+        name = try container.decode(String.self, forKey: .name)
         try super.init(from: decoder)
     }
     
@@ -34,6 +37,7 @@ class TvShow : Item {
         try container.encode(original_name, forKey: .original_name)
         try container.encode(origin_country, forKey: .origin_country)
         try container.encode(first_air_date, forKey: .first_air_date)
+        try container.encode(name, forKey: .name)
         try super.encode(to: encoder)
     }
 }

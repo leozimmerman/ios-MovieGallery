@@ -36,17 +36,15 @@ class SectionsSelectorView: UIView {
             currentOptions = {
                 switch selectedItemType {
                 case .movie:
-                    return moviesOptions
+                    return CategoryType.moviesTypes
                 case .tvShow:
-                    return tvOptions
+                    return CategoryType.tvShowsTypes
                 }
             }()
         }
     }
     private var selectedCategoryType: CategoryType = .popular
     
-    private let moviesOptions: [CategoryType] = [.popular, .topRated, .upcoming]
-    private let tvOptions: [CategoryType] = [.popular, .topRated, .onTheAir]
     private var currentOptions = [CategoryType]()
     
     // MARK: - Initializers
@@ -67,7 +65,7 @@ class SectionsSelectorView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         clipsToBounds = true
         
-        currentOptions = moviesOptions
+        currentOptions = CategoryType.moviesTypes
         updateTitleLabel()
     }
     // MARK: UI touches handling

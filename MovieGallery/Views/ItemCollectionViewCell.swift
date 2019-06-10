@@ -10,15 +10,22 @@ import UIKit
 
 class ItemCollectionViewCell : UICollectionViewCell {
     
+    static let reuseIdentifier = "ItemCollectionViewCell"
+    
     @IBOutlet var imageView: UIImageView!
     
-    func setup(with item: Item) {
-        if let configuration = APIManager.shared.systemConfiguration {
-            let imageUrlPath = item.posterFullPath(with: configuration)
-            imageView.loadImage(name: item.posterImageName, urlString: imageUrlPath)
-        }
+    override func prepareForReuse() {
+        imageView.image = nil
     }
     
+    func setup(with item: Item) {
+        guard let imageUrl = URLBuilder.shared.getImageUrlString(from: item), let imageName = item.posterImageName else { return }
+        DataHandler.shared.getImage(witnName: imageName, urlString: imageUrl) { (image) in
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }
+    }
 }
 
 
