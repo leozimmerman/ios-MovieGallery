@@ -9,6 +9,7 @@
 import UIKit
 
 //TODO: Clean up
+//TODO: Check privates
 class HomeViewController: UIViewController {
     
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!

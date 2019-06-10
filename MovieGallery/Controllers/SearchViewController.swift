@@ -15,6 +15,12 @@ class SearchViewController: UIViewController {
             searchBar.delegate = self
         }
     }
+    @IBOutlet var sectionsSelectorView: SectionsSelectorView! {
+        didSet {
+            sectionsSelectorView.delegate = self
+        }
+    }
+    @IBOutlet var sectionsSelectorHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var tableView: UITableView! {
         didSet {
@@ -24,16 +30,21 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private var allItems: [Item]?
+    private var allItemsInSearch: [Item]?
     private var filteredItems: [Item]?
+    private var filterActivated: Bool = false
+    private var currentItemType: ItemType = .movie
+    private var currentCategoryType: CategoryType = .popular
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allItems = StorageManager.allStoredItems
+        updateSearchRange()
+        setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
+        setSelectorViewHidden(!filterActivated, animated: false)
     }
     
     func filterItems(withText text: String) {
-        filteredItems = allItems?.filter({ (item) -> Bool in
+        filteredItems = allItemsInSearch?.filter({ (item) -> Bool in
             item.displayTitle.lowercased().contains(text.lowercased())
         })
         tableView.reloadData()
@@ -43,14 +54,71 @@ class SearchViewController: UIViewController {
         let vc = DetailViewController.create(with: item)
         present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func filterSwitchValueChanged(_ sender: Any) {
+        let filterSwitch = sender as! UISwitch
+        filterActivated = filterSwitch.isOn
+        setSelectorViewHidden(!filterActivated, animated: true)
+        updateSearchRange()
+    }
+    
+    func updateSearchRange() {
+        if !filterActivated {
+            allItemsInSearch = StorageManager.allStoredItems
+        } else {
+            allItemsInSearch = StorageManager.getItems(with: currentItemType, categoryType: currentCategoryType)
+        }
+        if let text = searchBar.text, text != "" {
+            filterItems(withText: text)
+        }
+    }
+    
+    func setSelectorViewHidden(_ hidden: Bool, animated: Bool) {
+        if hidden {
+            setSelectorViewHeight(height: 0.0, animated: hidden)
+        } else {
+            setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: animated)
+        }
+    }
+    
+    func setSelectorViewCollapsed(_ collapsed: Bool, animated: Bool) {
+        let height = collapsed ? SectionsSelectorView.collapsedHeight : SectionsSelectorView.regularHeight
+        setSelectorViewHeight(height: height, animated: animated)
+    }
+    
+    private func setSelectorViewHeight(height: CGFloat, animated: Bool) {
+        if (animated) {
+            UIView.animate(withDuration: 0.5) {
+                self.sectionsSelectorHeightConstraint.constant = height
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            self.sectionsSelectorHeightConstraint.constant = height
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
+// MARK: - Section Selector delegate
+extension SearchViewController : SectionSelectorDelegate {
+    func didToggleCollapse(_ sectionSelectorView: SectionsSelectorView, collapsed: Bool) {
+        setSelectorViewCollapsed(collapsed, animated: true)
+    }
+    
+    func didChangeSection(_ sectionSelectorView: SectionsSelectorView, itemType: ItemType, categoryType: CategoryType) {
+        currentItemType = itemType
+        currentCategoryType = categoryType
+        updateSearchRange()
+    }
+}
+
+// MARK: - UISearchBar Delegate
 extension SearchViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterItems(withText: searchText)
     }
 }
-
+// MARK: UITableView delegate
 extension SearchViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let item = filteredItems?[indexPath.row] else { return }
@@ -64,9 +132,7 @@ extension SearchViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") else {
-            return UITableViewCell(style: .default, reuseIdentifier: "DefaultCell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") ?? UITableViewCell(style: .default, reuseIdentifier: "DefaultCell")
         cell.textLabel?.text = filteredItems?[indexPath.row].displayTitle
         return cell
     }

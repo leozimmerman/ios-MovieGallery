@@ -25,19 +25,58 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-Mu-lwO" userLabel="Filter View">
+                                <rect key="frame" x="0.0" y="76" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abV-4d-Ydz">
+                                        <rect key="frame" x="20" y="14.5" width="96" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PuJ-21-7Wj">
+                                        <rect key="frame" x="306" y="9.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="filterSwitchValueChanged:" destination="YeA-dT-TkZ" eventType="valueChanged" id="YEr-jh-qCN"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="PuJ-21-7Wj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="abV-4d-Ydz" secondAttribute="trailing" constant="8" symbolic="YES" id="4Jd-7q-XHo"/>
+                                    <constraint firstAttribute="trailing" secondItem="PuJ-21-7Wj" secondAttribute="trailing" constant="20" id="7qG-9J-nwW"/>
+                                    <constraint firstItem="abV-4d-Ydz" firstAttribute="centerY" secondItem="DVB-Mu-lwO" secondAttribute="centerY" id="8r1-sd-seZ"/>
+                                    <constraint firstItem="abV-4d-Ydz" firstAttribute="leading" secondItem="DVB-Mu-lwO" secondAttribute="leading" constant="20" id="EF5-rq-MoJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="MTN-Nv-qdj"/>
+                                    <constraint firstItem="PuJ-21-7Wj" firstAttribute="centerY" secondItem="DVB-Mu-lwO" secondAttribute="centerY" id="laY-aT-8PH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGl-5g-YNf" customClass="SectionsSelectorView" customModule="MovieGallery" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="126" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="jNb-W7-h4z"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bnt-QD-Bxa">
-                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="292"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="DVB-Mu-lwO" secondAttribute="trailing" id="0AD-Iu-I2W"/>
+                            <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="VGl-5g-YNf" secondAttribute="trailing" id="BxK-Cb-3fc"/>
                             <constraint firstItem="ofu-Yg-ts0" firstAttribute="top" secondItem="vQb-DG-VhS" secondAttribute="top" id="IcT-xJ-1WI"/>
                             <constraint firstItem="ofu-Yg-ts0" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="J4U-yr-IKY"/>
+                            <constraint firstItem="DVB-Mu-lwO" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="LHR-t7-qPk"/>
                             <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="bnt-QD-Bxa" secondAttribute="trailing" id="TKK-fy-Mui"/>
-                            <constraint firstItem="bnt-QD-Bxa" firstAttribute="top" secondItem="ofu-Yg-ts0" secondAttribute="bottom" id="X7o-rG-rXM"/>
+                            <constraint firstItem="bnt-QD-Bxa" firstAttribute="top" secondItem="VGl-5g-YNf" secondAttribute="bottom" id="X7o-rG-rXM"/>
+                            <constraint firstItem="VGl-5g-YNf" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="YgY-H1-WII"/>
                             <constraint firstItem="vQb-DG-VhS" firstAttribute="trailing" secondItem="ofu-Yg-ts0" secondAttribute="trailing" id="hJd-ex-ath"/>
+                            <constraint firstItem="DVB-Mu-lwO" firstAttribute="top" secondItem="ofu-Yg-ts0" secondAttribute="bottom" id="rpb-Bm-PDm"/>
                             <constraint firstItem="bnt-QD-Bxa" firstAttribute="leading" secondItem="vQb-DG-VhS" secondAttribute="leading" id="u7v-UR-wBG"/>
+                            <constraint firstItem="VGl-5g-YNf" firstAttribute="top" secondItem="DVB-Mu-lwO" secondAttribute="bottom" id="xBl-3n-J1Z"/>
                             <constraint firstItem="vQb-DG-VhS" firstAttribute="bottom" secondItem="bnt-QD-Bxa" secondAttribute="bottom" id="yoF-P8-kDT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vQb-DG-VhS"/>
@@ -47,6 +86,8 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="searchBar" destination="ofu-Yg-ts0" id="PqO-E8-gMD"/>
+                        <outlet property="sectionsSelectorHeightConstraint" destination="jNb-W7-h4z" id="Uei-nN-Dn9"/>
+                        <outlet property="sectionsSelectorView" destination="VGl-5g-YNf" id="Zmz-bI-WhJ"/>
                         <outlet property="tableView" destination="bnt-QD-Bxa" id="Y1F-68-Xir"/>
                     </connections>
                 </viewController>

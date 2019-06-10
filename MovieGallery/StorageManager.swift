@@ -12,9 +12,13 @@ class StorageManager {
     class var allStoredItems: [Item]? {
         return ItemType.allTypes.flatMap { (itemType) -> [Item] in
             return CategoryType.allTypes.flatMap({ (categoryType) -> [Item] in
-                return StorageManager.loadMoviesPage(itemType: itemType, categoryType: categoryType)?.items ?? [Item]()
+                return StorageManager.loadMoviesPage(with: itemType, categoryType: categoryType)?.items ?? [Item]()
             })
         }
+    }
+    
+    class func getItems(with itemType: ItemType, categoryType: CategoryType) -> [Item] {
+        return StorageManager.loadMoviesPage(with: itemType, categoryType: categoryType)?.items ?? [Item]()
     }
     
     class func savePage(_ page: Page, categoryType: CategoryType) {
@@ -29,7 +33,7 @@ class StorageManager {
         }
     }
     
-    class func loadMoviesPage(itemType: ItemType, categoryType: CategoryType) -> Page? {
+    class func loadMoviesPage(with itemType: ItemType, categoryType: CategoryType) -> Page? {
         let filename = getPageFilename(with: itemType, categoryType: categoryType)
         switch itemType {
         case .movie:
