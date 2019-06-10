@@ -6,7 +6,7 @@
 //  Copyright © 2019 Leonardo Zimmerman. All rights reserved.
 //
 
-class Movie : Item {
+final class Movie : Item {
     var title: String
     var original_title: String
     var adult: Bool

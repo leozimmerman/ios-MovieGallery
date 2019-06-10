@@ -6,7 +6,7 @@
 //  Copyright © 2019 Leonardo Zimmerman. All rights reserved.
 //
 
-class TvShow : Item {
+final class TvShow : Item {
     var original_name: String
     var origin_country: [String]
     var first_air_date: String

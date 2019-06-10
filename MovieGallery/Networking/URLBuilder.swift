@@ -22,7 +22,7 @@ class URLBuilder {
         guard let url = createConfigurationUrl() else { return }
         DataHandler.shared.getConfiguration(url: url) { (configuration) in
             guard let config = configuration else {
-                print("Error retrieving API configuration")
+                print("URLBuilder: Error retrieving API configuration")
                 return
             }
             self.configuration = config

@@ -57,16 +57,16 @@ class StorageManager {
     }
     
     class func saveImage(_ image: UIImage, name: String) {
-        let pathURL: URL =  StorageType.permanent.baseFolder.appendingPathComponent(name)
+        let pathURL: URL =  StorageType.permanent.rootFolder.appendingPathComponent(name)
         do {
             try image.jpegData(compressionQuality: 1)?.write(to: pathURL)
         } catch {
-            print("StorageManager: error saving image")
+            print("StorageManager: Error saving image")
         }
     }
     
     class func loadImage(withName name: String) -> UIImage? {
-        let fileUrlPath = StorageType.permanent.baseFolder.appendingPathComponent(name).path
+        let fileUrlPath = StorageType.permanent.rootFolder.appendingPathComponent(name).path
         return UIImage(contentsOfFile: fileUrlPath)
     }
 

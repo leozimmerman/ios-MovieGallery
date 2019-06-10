@@ -111,7 +111,11 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Dd-uj-gmb">
-                                <rect key="frame" x="177.5" y="421.5" width="20" height="20"/>
+                                <rect key="frame" x="167.5" y="411.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="0yS-ri-91a"/>
+                                    <constraint firstAttribute="height" constant="40" id="nhd-Ju-JWo"/>
+                                </constraints>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OQB-KK-BUJ">
                                 <rect key="frame" x="0.0" y="245" width="375" height="373"/>

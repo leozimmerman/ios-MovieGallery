@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MoviesPage : Page {
+final class MoviesPage : Page {
     var results : [Movie]
     
     override var items: [Item] { return results }

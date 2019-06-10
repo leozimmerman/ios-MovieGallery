@@ -9,9 +9,7 @@
 import UIKit
 
 class DataTaskFactory {
-    static let shared = DataTaskFactory()
-    
-    func imageDataTask(with url: URL, completion: @escaping (UIImage?)->()) -> URLSessionDataTask {
+    class func imageDataTask(with url: URL, completion: @escaping (UIImage?)->()) -> URLSessionDataTask {
         return dataTask(with: url, completion: { (responseData) in
             guard let data = responseData else {
                 completion(nil)
@@ -21,7 +19,7 @@ class DataTaskFactory {
         })
     }
     
-    func decodableDataTask<T: Codable>(with url: URL, completion: @escaping (T?)->()) -> URLSessionDataTask {
+    class func decodableDataTask<T: Codable>(with url: URL, completion: @escaping (T?)->()) -> URLSessionDataTask {
         return dataTask(with: url) { (responseData) in
             guard let data = responseData else {
                 completion(nil)
@@ -38,7 +36,7 @@ class DataTaskFactory {
         }
     }
     
-    private func dataTask(with url: URL, completion: @escaping (Data?)->()) -> URLSessionDataTask {
+    class func dataTask(with url: URL, completion: @escaping (Data?)->()) -> URLSessionDataTask {
         let session = URLSession.shared
         let urlRequest = URLRequest(url: url)
         

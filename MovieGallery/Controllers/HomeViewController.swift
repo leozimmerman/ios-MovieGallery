@@ -9,8 +9,8 @@
 import UIKit
 
 //TODO: Clean up
-//TODO: Check privates
-class HomeViewController: UIViewController {
+
+final class HomeViewController: UIViewController {
     
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var sectionsSelectorView: SectionsSelectorView! {
@@ -30,28 +30,15 @@ class HomeViewController: UIViewController {
     private var currentItemType: ItemType = .movie
     private var currentCategoryType: CategoryType = .popular
 
-    //MARK: - Life View Cycle
+    // MARK: - Life View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
         loadSelectedSection()
     }
     
-    func clearPage() {
-        items?.removeAll()
-        collectionView.reloadData()
-        collectionView.isHidden = true
-        activityIndicator.startAnimating()
-    }
-    
-    func loadPage(_ page: Page) {
-        items = page.items
-        collectionView.reloadData()
-        collectionView.isHidden = false
-        activityIndicator.stopAnimating()
-    }
-    
-    func loadSelectedSection() {
+    // MARK: Data loading/fetching
+    private func loadSelectedSection() {
         if let savedPage = DataHandler.shared.getStoredPage(with: currentItemType, categoryType: currentCategoryType) {
             loadPage(savedPage)
         } else {
@@ -60,7 +47,7 @@ class HomeViewController: UIViewController {
         fetchSelectedSectionData()
     }
     
-    func fetchSelectedSectionData(){
+    private func fetchSelectedSectionData(){
         DataHandler.shared.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page: Page?) in
             DispatchQueue.main.async {
                 if let page = page {
@@ -72,7 +59,22 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func setSelectorViewCollapsed(_ collapsed: Bool, animated: Bool) {
+    // MARK: UI
+    private func clearPage() {
+        items?.removeAll()
+        collectionView.reloadData()
+        collectionView.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    private func loadPage(_ page: Page) {
+        items = page.items
+        collectionView.reloadData()
+        collectionView.isHidden = false
+        activityIndicator.stopAnimating()
+    }
+    
+    private func setSelectorViewCollapsed(_ collapsed: Bool, animated: Bool) {
         let height = collapsed ? SectionsSelectorView.collapsedHeight : SectionsSelectorView.regularHeight
         if (animated) {
             UIView.animate(withDuration: 0.5) {
@@ -85,18 +87,19 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func showErrorAlert(message: String) {
+    private func showErrorAlert(message: String) {
         let alertController = UIAlertController.createErrorAlertController(withMessage: message)
         self.present(alertController, animated: true, completion: nil)
     }
-
-    func presentDetailViewController(with item: Item) {
+    
+    // MARK: Navigation
+    private func presentDetailViewController(with item: Item) {
         let vc = DetailViewController.create(with: item)
         present(vc, animated: true, completion: nil)
     }
 }
 
-//MARK: - Section Selector delegate
+// MARK: - Section Selector delegate
 extension HomeViewController : SectionSelectorDelegate {
     func didToggleCollapse(_ sectionSelectorView: SectionsSelectorView, collapsed: Bool) {
         setSelectorViewCollapsed(collapsed, animated: true)
@@ -109,7 +112,7 @@ extension HomeViewController : SectionSelectorDelegate {
     }
 }
 
-//MARK: - UICollectionView delegates
+// MARK: - UICollectionView delegates
 extension HomeViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.bounds.width / 2, height: 200)

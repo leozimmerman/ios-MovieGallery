@@ -19,18 +19,17 @@ enum StorageType {
         }
     }
     
-    var folder: URL {
-        let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first!
+    var jsonFolder: URL {
         let subfolder = "com.movieGallery.json_storage"
-        return URL(fileURLWithPath: path).appendingPathComponent(subfolder)
+        return rootFolder.appendingPathComponent(subfolder)
     }
     
-    var baseFolder: URL {
+    var rootFolder: URL {
         let path = NSSearchPathForDirectoriesInDomains(searchPathDirectory, .userDomainMask, true).first!
         return URL(fileURLWithPath: path)
     }
     
     func clearStorage() {
-        try? FileManager.default.removeItem(at: folder)
+        try? FileManager.default.removeItem(at: jsonFolder)
     }
 }

@@ -64,8 +64,6 @@
 		B3BDC3EC22AAB40200E0DF05 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EA22AAB40200E0DF05 /* StorageManager.swift */; };
 		B3BDC3ED22AAB40200E0DF05 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EA22AAB40200E0DF05 /* StorageManager.swift */; };
 		B3BDC3EF22AABD2A00E0DF05 /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */; };
-		B3BDC3F022AABD2A00E0DF05 /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */; };
-		B3BDC3F122AABD2A00E0DF05 /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */; };
 		B3BDC3F322ABF54E00E0DF05 /* DataTaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3F222ABF54E00E0DF05 /* DataTaskFactory.swift */; };
 		B3BDC3F422ABF54E00E0DF05 /* DataTaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3F222ABF54E00E0DF05 /* DataTaskFactory.swift */; };
 		B3BDC3F522ABF54F00E0DF05 /* DataTaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3F222ABF54E00E0DF05 /* DataTaskFactory.swift */; };
@@ -78,6 +76,8 @@
 		B3BDC3FF22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3FE22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift */; };
 		B3BDC40022AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3FE22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift */; };
 		B3BDC40122AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3FE22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift */; };
+		B3BDC40722AEE03700E0DF05 /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */; };
+		B3BDC40822AEE03700E0DF05 /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,17 +183,13 @@
 		B30E5CAB22A5A55900A09DBC /* MovieGallery */ = {
 			isa = PBXGroup;
 			children = (
+				B3BDC40622AEDA7E00E0DF05 /* Storage */,
 				B3BDC3D522A9685D00E0DF05 /* Helpers */,
 				B30E5CDD22A5A79400A09DBC /* Networking */,
 				B30E5CDC22A5A78E00A09DBC /* Controllers */,
 				B30E5CDB22A5A77D00A09DBC /* Views */,
 				B30E5CDA22A5A77900A09DBC /* Models */,
 				B30E5CAC22A5A55900A09DBC /* AppDelegate.swift */,
-				B3BDC3DA22AAA24900E0DF05 /* JSONStore.swift */,
-				B3BDC3EA22AAB40200E0DF05 /* StorageManager.swift */,
-				B3BDC3F622ABF55A00E0DF05 /* URLBuilder.swift */,
-				B3BDC3F222ABF54E00E0DF05 /* DataTaskFactory.swift */,
-				B3BDC3E622AAB33700E0DF05 /* StorageType.swift */,
 				B3BDC3EE22AABD2A00E0DF05 /* ImageCacheHandler.swift */,
 				B30E5CB022A5A55900A09DBC /* Main.storyboard */,
 				B30E5CB322A5A55D00A09DBC /* Assets.xcassets */,
@@ -260,6 +256,8 @@
 		B30E5CDD22A5A79400A09DBC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B3BDC3F622ABF55A00E0DF05 /* URLBuilder.swift */,
+				B3BDC3F222ABF54E00E0DF05 /* DataTaskFactory.swift */,
 				B30E5CEA22A5A9FC00A09DBC /* DataHandler.swift */,
 			);
 			path = Networking;
@@ -271,6 +269,16 @@
 				B3BDC3FE22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B3BDC40622AEDA7E00E0DF05 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B3BDC3DA22AAA24900E0DF05 /* JSONStore.swift */,
+				B3BDC3EA22AAB40200E0DF05 /* StorageManager.swift */,
+				B3BDC3E622AAB33700E0DF05 /* StorageType.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,13 +455,13 @@
 				B3BDC3CB22A8658500E0DF05 /* TvShow.swift in Sources */,
 				B30E5D0222A83C4200A09DBC /* SectionsSelectorView.swift in Sources */,
 				B30E5D1522A85AFD00A09DBC /* Page.swift in Sources */,
+				B3BDC40722AEE03700E0DF05 /* ImageCacheHandler.swift in Sources */,
 				B3BDC3E022AAABA400E0DF05 /* MoviesPage.swift in Sources */,
 				B3BDC40022AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */,
 				B3BDC3CF22A8675E00E0DF05 /* Configuration.swift in Sources */,
 				B3BDC3F422ABF54E00E0DF05 /* DataTaskFactory.swift in Sources */,
 				B3BDC3FC22AE9CD200E0DF05 /* ItemType.swift in Sources */,
 				B30E5D1322A85AFB00A09DBC /* Item.swift in Sources */,
-				B3BDC3F022AABD2A00E0DF05 /* ImageCacheHandler.swift in Sources */,
 				B30E5D1722A85AFF00A09DBC /* Movie.swift in Sources */,
 				B3BDC3D322A9619E00E0DF05 /* DetailViewController.swift in Sources */,
 				B30E5CEC22A5A9FC00A09DBC /* DataHandler.swift in Sources */,
@@ -475,13 +483,13 @@
 				B3BDC3CC22A8658500E0DF05 /* TvShow.swift in Sources */,
 				B30E5D0322A83C4200A09DBC /* SectionsSelectorView.swift in Sources */,
 				B30E5D1622A85AFD00A09DBC /* Page.swift in Sources */,
+				B3BDC40822AEE03700E0DF05 /* ImageCacheHandler.swift in Sources */,
 				B3BDC3E122AAABA400E0DF05 /* MoviesPage.swift in Sources */,
 				B3BDC40122AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */,
 				B3BDC3D022A8675E00E0DF05 /* Configuration.swift in Sources */,
 				B3BDC3F522ABF54F00E0DF05 /* DataTaskFactory.swift in Sources */,
 				B3BDC3FD22AE9CD200E0DF05 /* ItemType.swift in Sources */,
 				B30E5D1422A85AFB00A09DBC /* Item.swift in Sources */,
-				B3BDC3F122AABD2A00E0DF05 /* ImageCacheHandler.swift in Sources */,
 				B30E5D1822A85AFF00A09DBC /* Movie.swift in Sources */,
 				B3BDC3D422A9619E00E0DF05 /* DetailViewController.swift in Sources */,
 				B30E5CED22A5A9FC00A09DBC /* DataHandler.swift in Sources */,

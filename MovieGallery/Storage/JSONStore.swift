@@ -23,7 +23,7 @@ class JSONStore<T> where T : Codable {
             let data = try JSONEncoder().encode(object)
             try data.write(to: fileURL)
         } catch let e {
-            print("JSON store saving ERROR: \(e)")
+            print("JSONStore saving ERROR: \(e)")
         }
     }
     
@@ -36,13 +36,13 @@ class JSONStore<T> where T : Codable {
             let jsonDecoder = JSONDecoder()
             return try jsonDecoder.decode(T.self, from: data)
         } catch let e {
-            print("JSON store loading: \(e)")
+            print("JSONStore loading: \(e)")
             return nil
         }
     }
     
     private var folder: URL {
-        return storageType.folder
+        return storageType.jsonFolder
     }
     
     private var fileURL: URL {

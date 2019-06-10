@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TvShowsPage : Page {
+final class TvShowsPage : Page {
     var results : [TvShow]
     
     override var items: [Item] { return results }

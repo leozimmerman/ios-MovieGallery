@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemCollectionViewCell : UICollectionViewCell {
+final class ItemCollectionViewCell : UICollectionViewCell {
     
     static let reuseIdentifier = "ItemCollectionViewCell"
     

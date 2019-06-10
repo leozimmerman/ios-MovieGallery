@@ -9,9 +9,7 @@
 import UIKit
 
 class ImageCacheHandler {
-    
     static let shared = ImageCacheHandler()
-    
     private let cache = NSCache<AnyObject, AnyObject>()
     
     func getImage(withKey key: String) -> UIImage? {

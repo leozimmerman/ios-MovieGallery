@@ -13,7 +13,7 @@ protocol SectionSelectorDelegate: class {
     func didChangeSection(_ sectionSelectorView: SectionsSelectorView, itemType: ItemType, categoryType: CategoryType)
 }
 
-class SectionsSelectorView: UIView {
+final class SectionsSelectorView: UIView {
     
     static let collapsedHeight: CGFloat = 50.0
     static let regularHeight: CGFloat = 200.0
@@ -85,12 +85,7 @@ class SectionsSelectorView: UIView {
         }
     }
     
-    private func toggleCollapse() {
-        isCollapsed = !isCollapsed
-        updateArrowOrientation()
-        delegate?.didToggleCollapse(self, collapsed: isCollapsed)
-    }
-    
+    // MARK: Options Selection
     private func selectItemType(_ itemType: ItemType) {
         selectedItemType = itemType
         pickerView.reloadAllComponents()
@@ -105,6 +100,13 @@ class SectionsSelectorView: UIView {
         delegate?.didChangeSection(self, itemType: selectedItemType, categoryType: selectedCategoryType)
     }
     
+    // MARK: UI
+    private func toggleCollapse() {
+        isCollapsed = !isCollapsed
+        updateArrowOrientation()
+        delegate?.didToggleCollapse(self, collapsed: isCollapsed)
+    }
+    
     private func updateTitleLabel() {
         let title = selectedItemType.title() + " - " + selectedCategoryType.title()
         titleLabel.text = title
@@ -117,7 +119,7 @@ class SectionsSelectorView: UIView {
         }
     }
 }
-
+// MARK: - UIPickerView Delegates
 extension SectionsSelectorView : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = currentOptions[row].title()

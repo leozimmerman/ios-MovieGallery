@@ -18,7 +18,7 @@ struct ImagesConfiguration: Codable {
     var still_sizes: [String]
 }
 
-class Configuration : Codable {
+final class Configuration : Codable {
     var images: ImagesConfiguration
     var change_keys: [String]
 }
