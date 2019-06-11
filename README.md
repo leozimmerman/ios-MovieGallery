@@ -35,6 +35,7 @@ Clases con la información obtenida del API:
 ### Utilities
 * `ItemsFilter`: Para filtrar 'Items' de acuerdo a un 'String'. Utilizado en la pantalla de busqueda offline.
 * `UIAlertController+Helpers`: Extension de `UIAllertController` para crear un AlertController ya configurado para mostrar un mensaje de error.
+* `UIViewController+Helpers`: Extension de `UIViewController` para setear el ocultamiento del teclado cuando se tapea alguna parte de la pantalla.
 
 ### Unit Tests
 * `MoviesPageTests`

@@ -41,14 +41,31 @@ final class SearchViewController: UIViewController {
         updateSearchRange()
         setSelectorViewCollapsed(sectionsSelectorView.isCollapsed, animated: false)
         setSelectorViewHidden(!filterActivated, animated: false)
+        setupHideKeyboardOnTap()
+    }
+
+    // MARK: Action handlers
+    @IBAction func filterSwitchValueChanged(_ sender: Any) {
+        let filterSwitch = sender as! UISwitch
+        filterActivated = filterSwitch.isOn
+        setSelectorViewHidden(!filterActivated, animated: true)
+        updateSearchRange()
     }
     
-    // MARK: Items Search
+    // MARK: Navigation
+    private func presentDetailViewController(with item: Item) {
+        let vc = DetailViewController.create(with: item)
+        present(vc, animated: true, completion: nil)
+    }
+}
+
+// MARK: Items Search
+private extension SearchViewController {
     func filterItems(withText text: String) {
         if let items = itemsToFilter {
             filteredItems = ItemsFilter.filterItems(items, withText: text)
         } else {
-            filteredItems = nil 
+            filteredItems = nil
         }
         tableView.reloadData()
     }
@@ -59,17 +76,11 @@ final class SearchViewController: UIViewController {
             filterItems(withText: text)
         }
     }
-    
-    // MARK: Action handlers
-    @IBAction func filterSwitchValueChanged(_ sender: Any) {
-        let filterSwitch = sender as! UISwitch
-        filterActivated = filterSwitch.isOn
-        setSelectorViewHidden(!filterActivated, animated: true)
-        updateSearchRange()
-    }
-    
-    // MARK: SelectorView Height modifying
-    private func setSelectorViewHidden(_ hidden: Bool, animated: Bool) {
+}
+
+// MARK: SelectorView Height modifying
+private extension SearchViewController {
+    func setSelectorViewHidden(_ hidden: Bool, animated: Bool) {
         if hidden {
             setSelectorViewHeight(height: 0.0, animated: hidden)
         } else {
@@ -77,12 +88,12 @@ final class SearchViewController: UIViewController {
         }
     }
     
-    private func setSelectorViewCollapsed(_ collapsed: Bool, animated: Bool) {
+    func setSelectorViewCollapsed(_ collapsed: Bool, animated: Bool) {
         let height = collapsed ? SectionsSelectorView.collapsedHeight : SectionsSelectorView.regularHeight
         setSelectorViewHeight(height: height, animated: animated)
     }
     
-    private func setSelectorViewHeight(height: CGFloat, animated: Bool) {
+    func setSelectorViewHeight(height: CGFloat, animated: Bool) {
         if (animated) {
             UIView.animate(withDuration: 0.5) {
                 self.sectionsSelectorHeightConstraint.constant = height
@@ -92,11 +103,6 @@ final class SearchViewController: UIViewController {
             self.sectionsSelectorHeightConstraint.constant = height
             self.view.layoutIfNeeded()
         }
-    }
-    // MARK: Navigation
-    private func presentDetailViewController(with item: Item) {
-        let vc = DetailViewController.create(with: item)
-        present(vc, animated: true, completion: nil)
     }
 }
 

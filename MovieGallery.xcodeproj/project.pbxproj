@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B304F98C22B04C3D0057FC4D /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B304F98B22B04C3D0057FC4D /* UIViewController+Helpers.swift */; };
+		B304F98D22B04C3D0057FC4D /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B304F98B22B04C3D0057FC4D /* UIViewController+Helpers.swift */; };
 		B30E5CAD22A5A55900A09DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E5CAC22A5A55900A09DBC /* AppDelegate.swift */; };
 		B30E5CAF22A5A55900A09DBC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E5CAE22A5A55900A09DBC /* HomeViewController.swift */; };
 		B30E5CB222A5A55900A09DBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30E5CB022A5A55900A09DBC /* Main.storyboard */; };
@@ -76,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B304F98B22B04C3D0057FC4D /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		B30E5CA922A5A55900A09DBC /* MovieGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30E5CAC22A5A55900A09DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B30E5CAE22A5A55900A09DBC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 			children = (
 				B3BDC41A22AFEB1B00E0DF05 /* ItemsFilter.swift */,
 				B3BDC3FE22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift */,
+				B304F98B22B04C3D0057FC4D /* UIViewController+Helpers.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -378,6 +382,7 @@
 				B3BDC3FF22AEAB7B00E0DF05 /* UIAlertController+Helpers.swift in Sources */,
 				B3BDC3EB22AAB40200E0DF05 /* StorageManager.swift in Sources */,
 				B3BDC3E722AAB33700E0DF05 /* StorageType.swift in Sources */,
+				B304F98C22B04C3D0057FC4D /* UIViewController+Helpers.swift in Sources */,
 				B3BDC3E322AAABBF00E0DF05 /* TvShowsPage.swift in Sources */,
 				B3BDC3F322ABF54E00E0DF05 /* DataTaskFactory.swift in Sources */,
 				B30E5CDF22A5A89A00A09DBC /* Movie.swift in Sources */,
@@ -408,6 +413,7 @@
 				B3BDC41922AFEA3500E0DF05 /* ItemsFilterTest.swift in Sources */,
 				B3BDC3CB22A8658500E0DF05 /* TvShow.swift in Sources */,
 				B30E5D0222A83C4200A09DBC /* SectionsSelectorView.swift in Sources */,
+				B304F98D22B04C3D0057FC4D /* UIViewController+Helpers.swift in Sources */,
 				B30E5D1522A85AFD00A09DBC /* Page.swift in Sources */,
 				B3BDC40722AEE03700E0DF05 /* ImageCacheHandler.swift in Sources */,
 				B3BDC3E022AAABA400E0DF05 /* MoviesPage.swift in Sources */,
