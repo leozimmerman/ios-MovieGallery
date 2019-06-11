@@ -9,33 +9,11 @@
 import UIKit
 
 
-class APIDataHandler {
+class DataProvider {
     // MARK: Public
-    class func getStoredPage(with itemType: ItemType, categoryType: CategoryType) -> Page? {
+    class func getStoredPageAndFetchupdate(with itemType: ItemType, categoryType: CategoryType, completion: @escaping (Page?)->()) -> Page? {
+        fetchPage(with: itemType, categoryType: categoryType, completion: completion)
         return StorageManager.loadMoviesPage(with: itemType, categoryType: categoryType)
-    }
-        
-    class func fetchPage(with itemType: ItemType, categoryType: CategoryType, completion: @escaping (Page?)->()) {
-        guard let url = URLBuilder.shared.pageUrl(with: itemType, categoryType: categoryType) else {
-            completion(nil)
-            return
-        }
-        switch itemType {
-        case .movie:
-            fetchMoviesPage(with: url) { (moviesPage) in
-                if let mp = moviesPage {
-                    StorageManager.savePage(mp, categoryType: categoryType)
-                }
-                completion(moviesPage)
-            }
-        case .tvShow:
-            fetchTvShowsPage(with: url) { (tvShowsPage) in
-                if let tvp = tvShowsPage {
-                    StorageManager.savePage(tvp, categoryType: categoryType)
-                }
-                completion(tvShowsPage)
-            }
-        }
     }
     
     class func getConfiguration(url: URL, completion: @escaping (Configuration?)->()) {
@@ -69,6 +47,29 @@ class APIDataHandler {
     }
     
     // MARK: Private
+    private class func fetchPage(with itemType: ItemType, categoryType: CategoryType, completion: @escaping (Page?)->()) {
+        guard let url = URLBuilder.shared.pageUrl(with: itemType, categoryType: categoryType) else {
+            completion(nil)
+            return
+        }
+        switch itemType {
+        case .movie:
+            fetchMoviesPage(with: url) { (moviesPage) in
+                if let mp = moviesPage {
+                    StorageManager.savePage(mp, categoryType: categoryType)
+                }
+                completion(moviesPage)
+            }
+        case .tvShow:
+            fetchTvShowsPage(with: url) { (tvShowsPage) in
+                if let tvp = tvShowsPage {
+                    StorageManager.savePage(tvp, categoryType: categoryType)
+                }
+                completion(tvShowsPage)
+            }
+        }
+    }
+    
     private class func fetchMoviesPage(with url: URL, completion: @escaping (MoviesPage?)->()) {
         DataTaskFactory.decodableDataTask(with: url, completion: completion).resume()
     }

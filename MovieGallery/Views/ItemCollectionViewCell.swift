@@ -20,7 +20,7 @@ final class ItemCollectionViewCell : UICollectionViewCell {
     
     func setup(with item: Item) {
         guard let imageUrl = URLBuilder.shared.getImageUrlString(from: item), let imageName = item.posterImageName else { return }
-        APIDataHandler.getImage(witnName: imageName, urlString: imageUrl) { (image) in
+        DataProvider.getImage(witnName: imageName, urlString: imageUrl) { (image) in
             DispatchQueue.main.async {
                 self.imageView.image = image
             }

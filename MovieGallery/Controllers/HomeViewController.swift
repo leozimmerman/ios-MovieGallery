@@ -39,31 +39,28 @@ final class HomeViewController: UIViewController {
     
     // MARK: Data loading/fetching
     private func loadSelectedSection() {
-        if let savedPage = APIDataHandler.getStoredPage(with: currentItemType, categoryType: currentCategoryType) {
-            loadPage(savedPage)
-        } else {
-            clearPage()
-        }
-        fetchSelectedSectionData()
-    }
-    
-    private func fetchSelectedSectionData(){
-        APIDataHandler.fetchPage(with: currentItemType, categoryType: currentCategoryType) { (page: Page?) in
+        let storedPage = DataProvider.getStoredPageAndFetchupdate(with: currentItemType, categoryType: currentCategoryType) { (updatedPage) in
             DispatchQueue.main.async {
-                if let page = page {
+                if let page = updatedPage {
                     self.loadPage(page)
                 } else {
                     self.showErrorAlert(message: "An error ocurred retrieving data from the server.")
                 }
             }
         }
+        
+        if let page = storedPage {
+            loadPage(page)
+        } else {
+            clearPage()
+        }
     }
     
     // MARK: UI
     private func clearPage() {
         items?.removeAll()
-        collectionView.reloadData()
         collectionView.isHidden = true
+        collectionView.reloadData()
         activityIndicator.startAnimating()
     }
     
