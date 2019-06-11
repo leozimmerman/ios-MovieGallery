@@ -29,7 +29,7 @@ final class SearchViewController: UIViewController {
         }
     }
     
-    private var allItemsInSearch: [Item]?
+    private var itemsToFilter: [Item]?
     private var filteredItems: [Item]?
     private var filterActivated: Bool = false
     private var currentItemType: ItemType = .movie
@@ -43,20 +43,18 @@ final class SearchViewController: UIViewController {
         setSelectorViewHidden(!filterActivated, animated: false)
     }
     
-    // MARK: Search functionality
+    // MARK: Items Search
     func filterItems(withText text: String) {
-        filteredItems = allItemsInSearch?.filter({ (item) -> Bool in
-            item.displayTitle.lowercased().contains(text.lowercased())
-        })
+        if let items = itemsToFilter {
+            filteredItems = ItemsFilter.filterItems(items, withText: text)
+        } else {
+            filteredItems = nil 
+        }
         tableView.reloadData()
     }
     
     func updateSearchRange() {
-        if !filterActivated {
-            allItemsInSearch = StorageManager.allStoredItems
-        } else {
-            allItemsInSearch = StorageManager.getItems(with: currentItemType, categoryType: currentCategoryType)
-        }
+        itemsToFilter = filterActivated ? StorageManager.getItems(with: currentItemType, categoryType: currentCategoryType) : StorageManager.allStoredItems
         if let text = searchBar.text, text != "" {
             filterItems(withText: text)
         }

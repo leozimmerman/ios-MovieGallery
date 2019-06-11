@@ -1,0 +1,409 @@
+{
+  "page": 1,
+  "total_results": 19811,
+  "total_pages": 991,
+  "results": [
+    {
+      "vote_count": 333,
+      "id": 320288,
+      "video": false,
+      "vote_average": 6.2,
+      "title": "Dark Phoenix",
+      "popularity": 430.768,
+      "poster_path": "/kZv92eTc0Gg3mKxqjjDAM73z9cy.jpg",
+      "original_language": "en",
+      "original_title": "Dark Phoenix",
+      "genre_ids": [
+        878,
+        28
+      ],
+      "backdrop_path": "/phxiKFDvPeQj4AbkvJLmuZEieDU.jpg",
+      "adult": false,
+      "overview": "The X-Men face their most formidable and powerful foe when one of their own, Jean Grey, starts to spiral out of control. During a rescue mission in outer space, Jean is nearly killed when she's hit by a mysterious cosmic force. Once she returns home, this force not only makes her infinitely more powerful, but far more unstable. The X-Men must now band together to save her soul and battle aliens that want to use Grey's new abilities to rule the galaxy.",
+      "release_date": "2019-06-05"
+    },
+    {
+      "vote_count": 1318,
+      "id": 420817,
+      "video": false,
+      "vote_average": 7.2,
+      "title": "Aladdin",
+      "popularity": 283.205,
+      "poster_path": "/3iYQTLGoy7QnjcUYRJy4YrAgGvp.jpg",
+      "original_language": "en",
+      "original_title": "Aladdin",
+      "genre_ids": [
+        12,
+        14,
+        10749,
+        35,
+        10751
+      ],
+      "backdrop_path": "/v4yVTbbl8dE1UP2dWu5CLyaXOku.jpg",
+      "adult": false,
+      "overview": "A kindhearted street urchin named Aladdin embarks on a magical adventure after finding a lamp that releases a wisecracking genie while a power-hungry Grand Vizier vies for the same lamp that has the power to make their deepest wishes come true.",
+      "release_date": "2019-05-22"
+    },
+    {
+      "vote_count": 5530,
+      "id": 299537,
+      "video": false,
+      "vote_average": 7,
+      "title": "Captain Marvel",
+      "popularity": 229.159,
+      "poster_path": "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+      "original_language": "en",
+      "original_title": "Captain Marvel",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "backdrop_path": "/w2PMyoyLU22YvrGK3smVM9fW1jj.jpg",
+      "adult": false,
+      "overview": "The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
+      "release_date": "2019-03-06"
+    },
+    {
+      "vote_count": 434,
+      "id": 373571,
+      "video": false,
+      "vote_average": 6.4,
+      "title": "Godzilla: King of the Monsters",
+      "popularity": 212.723,
+      "poster_path": "/pU3bnutJU91u3b4IeRPQTOP8jhV.jpg",
+      "original_language": "en",
+      "original_title": "Godzilla: King of the Monsters",
+      "genre_ids": [
+        878,
+        53,
+        28
+      ],
+      "backdrop_path": "/uovH5k4BAEPqXqxgwVrTtqH169g.jpg",
+      "adult": false,
+      "overview": "The new story follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species—thought to be mere myths—rise again, they all vie for supremacy, leaving humanity’s very existence hanging in the balance.",
+      "release_date": "2019-05-29"
+    },
+    {
+      "vote_count": 1188,
+      "id": 447404,
+      "video": false,
+      "vote_average": 7,
+      "title": "Pokémon Detective Pikachu",
+      "popularity": 187.508,
+      "poster_path": "/wgQ7APnFpf1TuviKHXeEe3KnsTV.jpg",
+      "original_language": "en",
+      "original_title": "Pokémon Detective Pikachu",
+      "genre_ids": [
+        9648,
+        10751,
+        35,
+        878,
+        28,
+        12
+      ],
+      "backdrop_path": "/nDP33LmQwNsnPv29GQazz59HjJI.jpg",
+      "adult": false,
+      "overview": "In a world where people collect pocket-size monsters (Pokémon) to do battle, a boy comes across an intelligent monster who seeks to be a detective.",
+      "release_date": "2019-05-03"
+    },
+    {
+      "vote_count": 963,
+      "id": 458156,
+      "video": false,
+      "vote_average": 7.3,
+      "title": "John Wick: Chapter 3 – Parabellum",
+      "popularity": 177.034,
+      "poster_path": "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
+      "original_language": "en",
+      "original_title": "John Wick: Chapter 3 – Parabellum",
+      "genre_ids": [
+        80,
+        28,
+        53
+      ],
+      "backdrop_path": "/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg",
+      "adult": false,
+      "overview": "Super-assassin John Wick returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin’s guild, the High Table, John Wick is excommunicado, but the world’s most ruthless hit men and women await his every turn.",
+      "release_date": "2019-05-15"
+    },
+    {
+      "vote_count": 9,
+      "id": 532321,
+      "video": false,
+      "vote_average": 5.1,
+      "title": "Re: Zero kara Hajimeru Isekai Seikatsu - Memory Snow",
+      "popularity": 155.462,
+      "poster_path": "/xqR4ABkFTFYe8NDJi3knwWX7zfn.jpg",
+      "original_language": "ja",
+      "original_title": "Re:ゼロから始める異世界生活 Memory Snow",
+      "genre_ids": [
+        16,
+        12
+      ],
+      "backdrop_path": "/8sNz2DxYiYqGkxk66U8BqvuZZjE.jpg",
+      "adult": false,
+      "overview": "Subaru and friends finally get a moment of peace, and Subaru goes on a certain secret mission that he must not let anyone find out about! However, even though Subaru is wearing a disguise, Petra and other children of the village immediately figure out who he is. Now that his mission was exposed within five seconds of it starting, what will happen with Subaru's \"date course\" with Emilia?",
+      "release_date": "2018-10-06"
+    },
+    {
+      "vote_count": 102,
+      "id": 502416,
+      "video": false,
+      "vote_average": 6.1,
+      "title": "Ma",
+      "popularity": 141.004,
+      "poster_path": "/6n7ASmQ1wY2cxTubFFGlcvPpyk7.jpg",
+      "original_language": "en",
+      "original_title": "Ma",
+      "genre_ids": [
+        53,
+        27
+      ],
+      "backdrop_path": "/mBOv5YrX5QGr5CusK0PKSHuxOt9.jpg",
+      "adult": false,
+      "overview": "Sue Ann is a loner who keeps to herself in her quiet Ohio town. One day, she is asked by Maggie, a new teenager in town, to buy some booze for her and her friends, and Sue Ann sees the chance to make some unsuspecting, if younger, friends of her own.",
+      "release_date": "2019-05-29"
+    },
+    {
+      "vote_count": 68,
+      "id": 412117,
+      "video": false,
+      "vote_average": 6.7,
+      "title": "The Secret Life of Pets 2",
+      "popularity": 136.654,
+      "poster_path": "/q3mKnSkzp1doIsCye6ap4KIUAbu.jpg",
+      "original_language": "en",
+      "original_title": "The Secret Life of Pets 2",
+      "genre_ids": [
+        12,
+        16,
+        35,
+        10751
+      ],
+      "backdrop_path": "/etaok7q2E5tV36oXe7GQzhUQ4fX.jpg",
+      "adult": false,
+      "overview": "What happens with our pets when we’re not home? This movie continues the original movie with Max and his friends.",
+      "release_date": "2019-05-24"
+    },
+    {
+      "vote_count": 6653,
+      "id": 299534,
+      "video": false,
+      "vote_average": 8.4,
+      "title": "Avengers: Endgame",
+      "popularity": 134.64,
+      "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      "original_language": "en",
+      "original_title": "Avengers: Endgame",
+      "genre_ids": [
+        12,
+        878,
+        28
+      ],
+      "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+      "adult": false,
+      "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+      "release_date": "2019-04-24"
+    },
+    {
+      "vote_count": 7534,
+      "id": 920,
+      "video": false,
+      "vote_average": 6.7,
+      "title": "Cars",
+      "popularity": 113.027,
+      "poster_path": "/5damnMcRFKSjhCirgX3CMa88MBj.jpg",
+      "original_language": "en",
+      "original_title": "Cars",
+      "genre_ids": [
+        16,
+        12,
+        35,
+        10751
+      ],
+      "backdrop_path": "/a1MlbLBk5Sy6YvMbSuKfwGlDVlb.jpg",
+      "adult": false,
+      "overview": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
+      "release_date": "2006-06-08"
+    },
+    {
+      "vote_count": 10,
+      "id": 566555,
+      "video": false,
+      "vote_average": 4.7,
+      "title": "Detective Conan: The Fist of Blue Sapphire",
+      "popularity": 103.733,
+      "poster_path": "/1GyvpwvgswOrHvxjnw2FBLNkTyo.jpg",
+      "original_language": "ja",
+      "original_title": "名探偵コナン 紺青の拳（フィスト）",
+      "genre_ids": [
+        16,
+        28,
+        18,
+        9648,
+        35
+      ],
+      "backdrop_path": "/wf6VDSi4aFCZfuD8sX8JAKLfJ5m.jpg",
+      "adult": false,
+      "overview": "23rd Detective Conan Movie.",
+      "release_date": "2019-04-12"
+    },
+    {
+      "vote_count": 31,
+      "id": 280960,
+      "video": false,
+      "vote_average": 4.2,
+      "title": "Catarina and the others",
+      "popularity": 100.409,
+      "poster_path": "/kZMCbp0o46Tsg43omSHNHJKNTx9.jpg",
+      "original_language": "pt",
+      "original_title": "Catarina e os Outros",
+      "genre_ids": [
+        18,
+        9648
+      ],
+      "backdrop_path": "/9nDiMhvL3FtaWMsvvvzQIuq276X.jpg",
+      "adult": false,
+      "overview": "Outside, the first sun rays break the dawn.  Sixteen years old Catarina can't fall asleep.  Inconsequently, in the big city adults are moved by desire...  Catarina found she is HIV positive. She wants to drag everyone else along.",
+      "release_date": "2011-03-01"
+    },
+    {
+      "vote_count": 333,
+      "id": 504608,
+      "video": false,
+      "vote_average": 7.8,
+      "title": "Rocketman",
+      "popularity": 99.75,
+      "poster_path": "/f4FF18ia7yTvHf2izNrHqBmgH8U.jpg",
+      "original_language": "en",
+      "original_title": "Rocketman",
+      "genre_ids": [
+        10402,
+        18
+      ],
+      "backdrop_path": "/oAr5bgf49vxga9etWoQpAeRMvhp.jpg",
+      "adult": false,
+      "overview": "The story of Elton John's life, from his years as a prodigy at the Royal Academy of Music through his influential and enduring musical partnership with Bernie Taupin.",
+      "release_date": "2019-05-22"
+    },
+    {
+      "vote_count": 1834,
+      "id": 287947,
+      "video": false,
+      "vote_average": 7.1,
+      "title": "Shazam!",
+      "popularity": 97.349,
+      "poster_path": "/xnopI5Xtky18MPhK40cZAGAOVeV.jpg",
+      "original_language": "en",
+      "original_title": "Shazam!",
+      "genre_ids": [
+        28,
+        12,
+        35,
+        14
+      ],
+      "backdrop_path": "/bi4jh0Kt0uuZGsGJoUUfqmbrjQg.jpg",
+      "adult": false,
+      "overview": "A boy is given the ability to become an adult superhero in times of need with a single magic word.",
+      "release_date": "2019-03-23"
+    },
+    {
+      "vote_count": 13913,
+      "id": 299536,
+      "video": false,
+      "vote_average": 8.3,
+      "title": "Avengers: Infinity War",
+      "popularity": 91.689,
+      "poster_path": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      "original_language": "en",
+      "original_title": "Avengers: Infinity War",
+      "genre_ids": [
+        12,
+        28,
+        14
+      ],
+      "backdrop_path": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
+      "adult": false,
+      "overview": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
+      "release_date": "2018-04-25"
+    },
+    {
+      "vote_count": 1658,
+      "id": 458723,
+      "video": false,
+      "vote_average": 7.1,
+      "title": "Us",
+      "popularity": 83.626,
+      "poster_path": "/ux2dU1jQ2ACIMShzB3yP93Udpzc.jpg",
+      "original_language": "en",
+      "original_title": "Us",
+      "genre_ids": [
+        53,
+        27
+      ],
+      "backdrop_path": "/AiG8iWpFtFSXAdhStWu6qBaqmv9.jpg",
+      "adult": false,
+      "overview": "Husband and wife Gabe and Adelaide Wilson take their kids to their beach house expecting to unplug and unwind with friends. But as night descends, their serenity turns to tension and chaos when some shocking visitors arrive uninvited.",
+      "release_date": "2019-03-14"
+    },
+    {
+      "vote_count": 10030,
+      "id": 245891,
+      "video": false,
+      "vote_average": 7.2,
+      "title": "John Wick",
+      "popularity": 81.981,
+      "poster_path": "/b9uYMMbm87IBFOq59pppvkkkgNg.jpg",
+      "original_language": "en",
+      "original_title": "John Wick",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "backdrop_path": "/mFb0ygcue4ITixDkdr7wm1Tdarx.jpg",
+      "adult": false,
+      "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
+      "release_date": "2014-10-22"
+    },
+    {
+      "vote_count": 2008,
+      "id": 166428,
+      "video": false,
+      "vote_average": 7.6,
+      "title": "How to Train Your Dragon: The Hidden World",
+      "popularity": 81.192,
+      "poster_path": "/xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg",
+      "original_language": "en",
+      "original_title": "How to Train Your Dragon: The Hidden World",
+      "genre_ids": [
+        16,
+        10751,
+        12
+      ],
+      "backdrop_path": "/lFwykSz3Ykj1Q3JXJURnGUTNf1o.jpg",
+      "adult": false,
+      "overview": "As Hiccup fulfills his dream of creating a peaceful dragon utopia, Toothless’ discovery of an untamed, elusive mate draws the Night Fury away. When danger mounts at home and Hiccup’s reign as village chief is tested, both dragon and rider must make impossible decisions to save their kind.",
+      "release_date": "2019-01-03"
+    },
+    {
+      "vote_count": 167,
+      "id": 429471,
+      "video": false,
+      "vote_average": 5.1,
+      "title": "Captive State",
+      "popularity": 78.546,
+      "poster_path": "/cVo7lylXAUDGuvDZBUYaP8Zjbku.jpg",
+      "original_language": "en",
+      "original_title": "Captive State",
+      "genre_ids": [
+        53,
+        878
+      ],
+      "backdrop_path": "/6IZ84KFhNpy6htsJmwFVuK30pyp.jpg",
+      "adult": false,
+      "overview": "Nearly a decade after occupation by an extraterrestrial force, the lives of a Chicago neighborhood on both sides of the conflict are explored.",
+      "release_date": "2019-03-15"
+    }
+  ]
+}
