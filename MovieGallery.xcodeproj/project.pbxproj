@@ -155,17 +155,17 @@
 		B30E5CAB22A5A55900A09DBC /* MovieGallery */ = {
 			isa = PBXGroup;
 			children = (
-				B3BDC41D22AFED4600E0DF05 /* Utilities */,
-				B3BDC40622AEDA7E00E0DF05 /* Storage */,
-				B30E5CDD22A5A79400A09DBC /* Networking */,
-				B30E5CDC22A5A78E00A09DBC /* Controllers */,
-				B30E5CDB22A5A77D00A09DBC /* Views */,
-				B30E5CDA22A5A77900A09DBC /* Models */,
+				B30E5CB822A5A55D00A09DBC /* Info.plist */,
 				B30E5CAC22A5A55900A09DBC /* AppDelegate.swift */,
-				B30E5CB022A5A55900A09DBC /* Main.storyboard */,
 				B30E5CB322A5A55D00A09DBC /* Assets.xcassets */,
 				B30E5CB522A5A55D00A09DBC /* LaunchScreen.storyboard */,
-				B30E5CB822A5A55D00A09DBC /* Info.plist */,
+				B30E5CB022A5A55900A09DBC /* Main.storyboard */,
+				B30E5CDC22A5A78E00A09DBC /* Controllers */,
+				B30E5CDA22A5A77900A09DBC /* Models */,
+				B30E5CDD22A5A79400A09DBC /* Networking */,
+				B3BDC40622AEDA7E00E0DF05 /* Storage */,
+				B3BDC41D22AFED4600E0DF05 /* Utilities */,
+				B30E5CDB22A5A77D00A09DBC /* Views */,
 			);
 			path = MovieGallery;
 			sourceTree = "<group>";
