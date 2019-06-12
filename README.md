@@ -44,11 +44,11 @@ Clases con la información obtenida del API:
 * `ItemsFilterTest`
 
 
-## En qué consiste el principio de responsabilidad única? Cuál es su propósito?
+## Principio de responsablidad única (SOLID)
 El principio de responsabilidad única es uno de los principios SOLID. Sostiene que cada modulo clase o función debería tener responsabilidad sobre una única funcionalidad del software que integra y a su vez esta reponsabilidad debe estar totalmente encapsulada en esta clase, módulo. 
 Este principio permite desarrollar código (principalmente OOP) más ordenado, mejor estructurado lo que hace que sea más fácil de mantener, escalar y testear.
 
-## Qué características tiene, según su opinión, un “buen” código o código limpio
+## Caracteristicas de un “buen” código o código limpio
 Un "buen" código debe estar bien estructurado, organizado. Debe ser fácil de entender para un nuevo desarrollador que se aproxima al mismo. Debe seguir guidelines comúnmente usadas en el desarrollo del tipo de tecnología al que pertence (iOS, .NET, etc.). Debe tratar de seguir los principios SOLID si está orientado a objetos. Debe ser facil de mantener y extender, para que en caso de solucionar futuros bugs o agregar nuevas funcionalidades no se necesite refactorizar o modificar mucho código existente. De ser posible es bueno que sea TDD.
 
 ![Screenshot](screenshots/1.png) ![Screenshot](screenshots/2.png)
