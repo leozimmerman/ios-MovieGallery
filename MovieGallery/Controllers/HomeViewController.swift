@@ -39,12 +39,12 @@ final class HomeViewController: UIViewController {
     
     // MARK: Data loading/fetching
     private func loadSelectedSection() {
-        let storedPage = DataProvider.getStoredPageAndFetchupdate(with: currentItemType, categoryType: currentCategoryType) { (updatedPage) in
+        let storedPage = DataProvider.getStoredPageAndFetchupdate(with: currentItemType, categoryType: currentCategoryType) {[weak self] (updatedPage) in
             DispatchQueue.main.async {
                 if let page = updatedPage {
-                    self.loadPage(page)
+                    self?.loadPage(page)
                 } else {
-                    self.showErrorAlert(message: "An error ocurred retrieving data from the server.")
+                    self?.showErrorAlert(message: "An error ocurred retrieving data from the server.")
                 }
             }
         }

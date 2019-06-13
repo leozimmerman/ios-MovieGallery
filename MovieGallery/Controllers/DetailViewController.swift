@@ -20,9 +20,9 @@ class DetailViewController : UIViewController {
         overviewLabel.text = item.overview
         
         guard let imageUrl = URLBuilder.shared.getImageUrlString(from: item), let imageName =  item.posterImageName else { return }
-        DataProvider.getImage(witnName: imageName, urlString: imageUrl) { (image) in
+        DataProvider.getImage(witnName: imageName, urlString: imageUrl) {[weak self] (image) in
             DispatchQueue.main.async {
-                self.imageView.image = image
+                self?.imageView.image = image
             }
         }
     }

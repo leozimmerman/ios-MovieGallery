@@ -20,12 +20,12 @@ class URLBuilder {
     
     func fetchConfiguration() {
         guard let url = createConfigurationUrl() else { return }
-        DataProvider.getConfiguration(url: url) { (configuration) in
+        DataProvider.getConfiguration(url: url) {[weak self] (configuration) in
             guard let config = configuration else {
                 print("URLBuilder: Error retrieving API configuration")
                 return
             }
-            self.configuration = config
+            self?.configuration = config
         }
     }
     
