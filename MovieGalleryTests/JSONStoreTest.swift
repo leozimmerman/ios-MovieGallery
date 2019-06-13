@@ -8,29 +8,8 @@
 
 import XCTest
 
-class JSONStoreTest: XCTestCase {
+class JSONStoreTest: PagesTest {
     
-    var moviesPage: MoviesPage!
-    var tvShowsPage: TvShowsPage!
-
-    override func setUp() {
-        let bundle = Bundle(for: type(of: self))
-        let decoder = JSONDecoder()
-        
-        let moviesPagefileUrl = bundle.url(forResource: "moviesPopular", withExtension: "json")
-        let moviesPagefileData = try! Data(contentsOf: moviesPagefileUrl!)
-        moviesPage = try? decoder.decode(MoviesPage.self, from: moviesPagefileData)
-        
-        let tvShowsPageFileUrl = bundle.url(forResource: "tvShowsPopular", withExtension: "json")
-        let tvShowsPageFileData = try! Data(contentsOf: tvShowsPageFileUrl!)
-        tvShowsPage = try? decoder.decode(TvShowsPage.self, from: tvShowsPageFileData)
-    }
-
-    override func tearDown() {
-        moviesPage = nil
-        tvShowsPage = nil
-    }
-
     func testStorage() {
         let moviesStore = JSONStore<MoviesPage>(storageType: StorageType.cache, filename: "moviesPage")
         moviesStore.save(moviesPage)
